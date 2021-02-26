@@ -75,3 +75,6 @@ survey_users.to_csv('data/02_intermediate/survey_users.csv',
 
 merged_df.to_csv('data/02_intermediate/merged_users.csv',
                     index = True)
+
+baseline.to_csv('data/02_intermediate/baseline.csv',
+                    index = True)
