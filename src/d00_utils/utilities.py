@@ -95,3 +95,48 @@ def remove_testusers(df, column = 'user_id'):
             raise ValueError('user_id is no column and no index.')
     
     return df
+
+def show_values_on_bars(axs, h_v="v", space=0.4, normalize = False):
+    import numpy as np
+    import matplotlib
+    """
+    Parameters
+    ----------
+    axs : matplotlib axes object.
+    h_v : Whether the barplot is horizontal or vertical. 
+          "h" represents the horizontal barplot, 
+          "v" represents the vertical barplot. .
+    space : The space between value text and the top edge of the bar. 
+            Only works for horizontal mode. The default is 0.4.
+    normalize: Whether to plot on normalized values or not
+
+    Returns
+    -------
+    None.
+
+    """
+    matplotlib.rcParams.update({'font.size': 8})
+    
+    def _show_on_single_plot(ax):
+        if h_v == "v":
+            for p in ax.patches:
+                _x = p.get_x() + p.get_width() / 2
+                _y = p.get_y() + p.get_height()
+                value = int(p.get_height())
+                ax.text(_x, _y, value, ha="center") 
+        elif h_v == "h":
+            for p in ax.patches:
+                _x = p.get_x() + p.get_width() + float(space)
+                _y = p.get_y() + p.get_height()
+                if normalize:    
+                    _x = p.get_x() + p.get_width()
+                    value = round(p.get_width(), 2)
+                else:
+                    value = int(p.get_width())
+                ax.text(_x, _y, value, ha="left")
+
+    if isinstance(axs, np.ndarray):
+        for idx, ax in np.ndenumerate(axs):
+            _show_on_single_plot(ax)
+    else:
+        _show_on_single_plot(axs)
