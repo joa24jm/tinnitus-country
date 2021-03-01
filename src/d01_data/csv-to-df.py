@@ -50,6 +50,15 @@ merged_df.set_index('id', drop = True, inplace = True)
 merged_df = pd.merge(merged_df, users_meta[['user_id', 'country']], 
                      on = 'user_id', how = 'left')
 
+# add continent information by reading in continent dataframe
+url = 'https://pkgstore.datahub.io/JohnSnowLabs/country-and-continent-codes-list/country-and-continent-codes-list-csv_csv/data/b7876b7f496677669644f3d1069d3121/country-and-continent-codes-list-csv_csv.csv'
+continent_codes = pd.read_csv(url)
+
+# add column by left outer join with merged_df
+merged_df = pd.merge(merged_df, continent_codes[['Continent_Name', 'Two_Letter_Country_Code']], 
+                     left_on = 'country', right_on = 'Two_Letter_Country_Code', 
+                     how = 'left').drop(columns='Two_Letter_Country_Code')
+
 # rename columns, fup = FollowUp, bl= Baseline
 rename_cols = {'save_date':'fup_answer_from',
                'created_at_y': 'bl_answer_from'}
