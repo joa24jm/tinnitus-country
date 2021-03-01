@@ -55,7 +55,7 @@ url = 'https://pkgstore.datahub.io/JohnSnowLabs/country-and-continent-codes-list
 continent_codes = pd.read_csv(url)
 
 # add column by left outer join with merged_df
-merged_df = pd.merge(merged_df, continent_codes[['Continent_Name', 'Two_Letter_Country_Code']], 
+merged_df = pd.merge(merged_df, continent_codes[['Continent_Name', 'Two_Letter_Country_Code', 'Country_Name']], 
                      left_on = 'country', right_on = 'Two_Letter_Country_Code', 
                      how = 'left').drop(columns='Two_Letter_Country_Code')
 
