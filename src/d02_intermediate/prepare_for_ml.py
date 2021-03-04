@@ -48,7 +48,8 @@ features_list.extend(['question4', 'question5', 'question6', 'question7'])
 #%% shrink the dataset to features and target
 df = df.loc[country_dummy_df.index, features_list + ['question1', 'user_id']]
 
-# drop missing values for now
+# drop missing values for now -> this leads to a lost of approx 650 users
+#TODO: Better approach!
 df.dropna(inplace=True)
 
 #%% draw randomly from the stratum with question1 == 0 and add these to the df
