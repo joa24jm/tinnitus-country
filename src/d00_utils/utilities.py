@@ -140,3 +140,36 @@ def show_values_on_bars(axs, h_v="v", space=0.4, normalize = False):
             _show_on_single_plot(ax)
     else:
         _show_on_single_plot(axs)
+        
+        
+def get_season(d):
+    """
+    Returns the season given a datetime object
+
+    Parameters
+    ----------
+    date : datetime object
+    Returns
+    -------
+    season as string.
+
+    """
+    from datetime import date, datetime
+
+    Y = 2000 # dummy leap year to allow input X-02-29 (leap day)
+    seasons = [('winter', (date(Y,  1,  1),  date(Y,  3, 20))),
+               ('spring', (date(Y,  3, 21),  date(Y,  6, 20))),
+               ('summer', (date(Y,  6, 21),  date(Y,  9, 22))),
+               ('autumn', (date(Y,  9, 23),  date(Y, 12, 20))),
+               ('winter', (date(Y, 12, 21),  date(Y, 12, 31)))]
+    
+
+    if isinstance(d, datetime):
+        d = d.date()
+    d = d.replace(year=Y)
+    try:
+        return_value = next(season for season, (start, end) in seasons
+                    if start <= d <= end)
+    except:
+        return_value = None
+    return return_value
