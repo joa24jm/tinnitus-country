@@ -133,3 +133,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 src/d01_data/json-to-df.py
+*.stats

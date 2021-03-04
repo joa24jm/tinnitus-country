@@ -18,7 +18,8 @@ import utilities as utils
 #%% read in dataframes
 baseline =   pd.read_csv(proj_loc + 'data/01_raw/answers.csv', delimiter = ';')
 qns =   pd.read_csv(proj_loc + 'data/01_raw/questions.csv', delimiter = ';')
-daily = pd.read_csv(proj_loc + 'data/01_raw/standardanswers.csv', delimiter = ';')
+daily = pd.read_csv(proj_loc + 'data/01_raw/standardanswers.csv', delimiter = ';',
+                    parse_dates=['created_at', 'save_date'])
 users = pd.read_csv(proj_loc + 'data/01_raw/users.csv', delimiter = ';')
 users_meta = pd.read_csv(proj_loc + 'data/01_raw/users_metadata.csv', delimiter = ';')
 survey = pd.read_csv(proj_loc + 'data/01_raw/umfrageonline-1277718.csv', delimiter = ';')
@@ -37,7 +38,7 @@ merged_df = pd.merge(daily, baseline, left_on='user_id', right_index=True, how =
 
 # drop columns that are not of interest
 cols_to_drop = ['notification_date', 'autosaved', 'notification_fixed',
-                'created_at_x', 'updated_at', 'user_id_reference', 'user_agent',
+                'save_date', 'updated_at', 'user_id_reference', 'user_agent',
                 'soundlevel']
 
 # drop specified columns
@@ -60,7 +61,7 @@ merged_df = pd.merge(merged_df, continent_codes[['Continent_Name', 'Two_Letter_C
                      how = 'left').drop(columns='Two_Letter_Country_Code')
 
 # rename columns, fup = FollowUp, bl= Baseline
-rename_cols = {'save_date':'fup_answer_from',
+rename_cols = {'created_at_x':'fup_answer_from',
                'created_at_y': 'bl_answer_from'}
 merged_df.rename(columns = rename_cols, inplace= True)
 
