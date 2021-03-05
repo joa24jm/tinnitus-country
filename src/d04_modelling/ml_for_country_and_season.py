@@ -18,6 +18,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
+import joblib
 
 #%% read in df
 df = pd.read_csv(p_loc + 'data/03_processed/df_equal_splits.csv')
@@ -73,11 +74,11 @@ scores = {'rf': None, 'gb': None}
 # save trained clfs
 trained_clfs= []
 
-#%% loop over params grid
+#%% loop over params grid, takes approx. 2-3 hours
 for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     gridsearch = GridSearchCV(estimator = clf, 
                               param_grid = param_grid,
-                              scoring = 'f1',
+                              scoring = 'accuracy',
                               n_jobs = -1,
                               cv = 5,
                               refit = True,
@@ -86,16 +87,33 @@ for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     # perform gridsearch on train data
     gridsearch.fit(x_train, y_train)
     
+    # refit best estimator
+    gridsearch.best_estimator_.fit(x_train, y_train)
+    
+    # safe this estimator
+    joblib.dump(gridsearch.best_estimator_, f'results/04_models/best_estimator/{key}.pkl')
+    
     # safe scores in scores dict
     scores[key] = gridsearch.best_score_
     
     # safe trained clf to a list
     trained_clfs.append(gridsearch.best_estimator_)
-
+    
+    # safe gridsearch results to dataframe
+    pd.DataFrame(gridsearch.cv_results_).to_csv(f'/results/04_models/gridsearch/{key}.csv')
+    
+    # safe classification report to excel
+    y_pred = gridsearch.best_estimator_.predict(x_test)
+    report = classification_report(y_test, y_pred, output_dict=True, target_names = ['Tinnitus NO', 'Tinnitus YES'])
+    pd.DataFrame(report).to_csv(f'results/06_reports/classification_report_{key}.csv')
+    
 #%% get classification reports for best estimators
 # save both clf reports into a list
 clf_reports = []
 
 # loop over trained_clfs
 for trained_clf in trained_clfs:
-    clf_reports.append(classification_report(trained_clf.predict(x_test), y_test))
+    clf_reports.append(classification_report(, y_test))
+
+#%% save results from estimator
+
