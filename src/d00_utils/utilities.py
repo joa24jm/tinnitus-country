@@ -121,8 +121,11 @@ def show_values_on_bars(axs, h_v="v", space=0.4, normalize = False):
         if h_v == "v":
             for p in ax.patches:
                 _x = p.get_x() + p.get_width() / 2
-                _y = p.get_y() + p.get_height()
-                value = int(p.get_height())
+                _y = (p.get_y() + p.get_height())*1.02
+                if normalize:    
+                    value = round(p.get_height(), 3)
+                else:
+                    value = int(p.get_height())
                 ax.text(_x, _y, value, ha="center") 
         elif h_v == "h":
             for p in ax.patches:
@@ -130,7 +133,7 @@ def show_values_on_bars(axs, h_v="v", space=0.4, normalize = False):
                 _y = p.get_y() + p.get_height()
                 if normalize:    
                     _x = p.get_x() + p.get_width()
-                    value = round(p.get_width(), 2)
+                    value = p.get_width()
                 else:
                     value = int(p.get_width())
                 ax.text(_x, _y, value, ha="left")
