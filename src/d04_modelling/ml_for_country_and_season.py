@@ -19,6 +19,7 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
 import joblib
+from sklearn.metrics import confusion_matrix
 
 #%% read in df
 df = pd.read_csv(p_loc + 'data/03_processed/df_equal_splits.csv')
@@ -105,15 +106,12 @@ for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     # safe classification report to excel
     y_pred = gridsearch.best_estimator_.predict(x_test)
     report = classification_report(y_test, y_pred, output_dict=True, target_names = ['Tinnitus NO', 'Tinnitus YES'])
-    pd.DataFrame(report).to_csv(f'results/06_reports/classification_report_{key}.csv')
+    pd.DataFrame(report).to_csv(f'results/06_reports/classification_reports/{key}.csv')
+    
+    # safe confusion matrix
+    labels = ['Tinnitus NO', 'Tinnitus YES']
+    pd.DataFrame(confusion_matrix(y_test, y_pred), index = labels, 
+                 columns = labels).to_csv(f'results/06_reports/confusion_matrices/confusion_{key}.csv')
     
 #%% get classification reports for best estimators
-# save both clf reports into a list
-clf_reports = []
-
-# loop over trained_clfs
-for trained_clf in trained_clfs:
-    clf_reports.append(classification_report(, y_test))
-
-#%% save results from estimator
 
