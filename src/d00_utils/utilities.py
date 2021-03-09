@@ -176,3 +176,25 @@ def get_season(d):
     except:
         return_value = None
     return return_value
+
+def format_ct(ct):
+    """
+    
+
+    Parameters
+    ----------
+    ct : Unnormalized dataframe with values
+
+    Returns
+    -------
+    ct_return : columns-Normalized dataframe with format {value} (%)
+    """
+
+    ct_return = ct.copy()
+    for col in ct.columns:
+        s = ct[col].values.sum()
+        for idx in ct[col].index:
+            val = ct.loc[idx, col]
+            ct_return.loc[idx, col] = (f'{val} ({val/s:.1%})')
+
+    return ct_return
