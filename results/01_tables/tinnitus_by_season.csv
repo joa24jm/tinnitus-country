@@ -1,0 +1,21 @@
+Country_Name,fup_season,No,Yes,n_users,n_questionnaires
+"Germany, Federal Republic of",spring,0.22392042697719552,0.7760795730228045,385,12439
+"Germany, Federal Republic of",summer,0.21930405355697785,0.7806959464430221,378,13670
+"Germany, Federal Republic of",autumn,0.1697060716584424,0.8302939283415576,460,14050
+"Germany, Federal Republic of",winter,0.23505554575912538,0.7649444542408746,387,11375
+"Netherlands, Kingdom of the",spring,0.35202761000862814,0.6479723899913719,48,1160
+"Netherlands, Kingdom of the",summer,0.10116731517509728,0.8988326848249028,44,1031
+"Netherlands, Kingdom of the",autumn,0.3703024747937672,0.6296975252062328,78,2191
+"Netherlands, Kingdom of the",winter,0.3744740532959327,0.6255259467040674,60,2861
+"Switzerland, Swiss Confederation",spring,0.3121069182389937,0.6878930817610063,40,1273
+"Switzerland, Swiss Confederation",summer,0.2504273504273504,0.7495726495726496,32,1172
+"Switzerland, Swiss Confederation",autumn,0.3488888888888889,0.6511111111111111,38,1352
+"Switzerland, Swiss Confederation",winter,0.3926940639269406,0.6073059360730594,44,1319
+United Kingdom of Great Britain & Northern Ireland,spring,0.15606936416184972,0.8439306358381503,61,1740
+United Kingdom of Great Britain & Northern Ireland,summer,0.04276985743380855,0.9572301425661914,54,491
+United Kingdom of Great Britain & Northern Ireland,autumn,0.27897838899803534,0.7210216110019646,48,509
+United Kingdom of Great Britain & Northern Ireland,winter,0.3411016949152542,0.6588983050847458,69,944
+United States of America,spring,0.12267180475272961,0.8773281952472703,152,1561
+United States of America,summer,0.1889728768341485,0.8110271231658515,132,2975
+United States of America,autumn,0.10050446255335661,0.8994955374466433,156,3044
+United States of America,winter,0.10884577441631042,0.8911542255836896,156,3056

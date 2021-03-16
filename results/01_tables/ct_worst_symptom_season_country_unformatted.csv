@@ -1,37 +1,37 @@
-worst_symptom,season,AU (n=71),CA (n=121),CH (n=114),DE (n=1310),ES (n=82),FR (n=64),GB (n=201),IT (n=78),NL (n=175),US (n=537)
-"Because of the tinnitus I am more irritable with my family, friends and colleagues.",spring,1.4%,0.0%,0.0%,1.9%,4.9%,1.6%,0.5%,5.1%,1.1%,0.9%
-,summer,2.8%,0.0%,0.0%,1.4%,0.0%,3.1%,1.0%,1.3%,1.1%,1.9%
-,autumn,4.2%,0.0%,1.8%,1.7%,4.9%,1.6%,0.5%,1.3%,2.3%,2.2%
-,winter,0.0%,0.0%,0.9%,1.5%,0.0%,3.1%,1.0%,1.3%,0.6%,0.9%
-Because of the tinnitus I am more sensitive to environmental noises.,spring,1.4%,2.5%,4.4%,2.7%,0.0%,1.6%,2.0%,2.6%,1.1%,1.5%
-Because of the tinnitus I am more sensitive to environmental noises.,summer,2.8%,3.3%,0.9%,1.8%,1.2%,6.3%,1.0%,1.3%,1.7%,2.2%
-Because of the tinnitus I am more sensitive to environmental noises.,autumn,1.4%,4.1%,4.4%,2.9%,2.4%,1.6%,0.5%,2.6%,4.0%,2.6%
-Because of the tinnitus I am more sensitive to environmental noises.,winter,1.4%,1.7%,2.6%,2.1%,1.2%,0.0%,1.0%,2.6%,0.0%,1.7%
-Because of the tinnitus it is difficult to concentrate.,spring,4.2%,2.5%,0.9%,3.4%,4.9%,0.0%,2.5%,2.6%,2.9%,4.7%
-Because of the tinnitus it is difficult to concentrate.,summer,1.4%,1.7%,2.6%,2.9%,4.9%,1.6%,2.0%,2.6%,1.1%,2.8%
-Because of the tinnitus it is difficult to concentrate.,autumn,2.8%,5.0%,0.9%,3.7%,0.0%,0.0%,1.5%,7.7%,6.3%,5.2%
-Because of the tinnitus it is difficult to concentrate.,winter,0.0%,2.5%,1.8%,2.6%,3.7%,1.6%,1.0%,1.3%,3.4%,2.8%
-"Because of the tinnitus it is difficult to follow a conversation, a piece of music or a film.",spring,2.8%,2.5%,2.6%,3.4%,0.0%,0.0%,3.5%,1.3%,1.1%,4.3%
-"Because of the tinnitus it is difficult to follow a conversation, a piece of music or a film.",summer,0.0%,4.1%,2.6%,3.0%,1.2%,0.0%,6.0%,1.3%,3.4%,4.7%
-"Because of the tinnitus it is difficult to follow a conversation, a piece of music or a film.",autumn,5.6%,4.1%,3.5%,4.1%,2.4%,6.3%,2.5%,1.3%,3.4%,3.2%
-"Because of the tinnitus it is difficult to follow a conversation, a piece of music or a film.",winter,4.2%,0.0%,2.6%,3.6%,0.0%,3.1%,2.5%,2.6%,1.7%,3.9%
-Because of the tinnitus it is hard for me to get to sleep.,spring,0.0%,4.1%,4.4%,2.6%,3.7%,6.3%,3.0%,0.0%,1.1%,3.5%
-Because of the tinnitus it is hard for me to get to sleep.,summer,4.2%,0.8%,1.8%,2.0%,2.4%,4.7%,3.0%,3.8%,0.6%,3.0%
-Because of the tinnitus it is hard for me to get to sleep.,autumn,2.8%,2.5%,0.9%,3.4%,2.4%,1.6%,5.0%,6.4%,5.1%,3.2%
-Because of the tinnitus it is hard for me to get to sleep.,winter,9.9%,2.5%,3.5%,2.7%,3.7%,1.6%,5.5%,1.3%,1.7%,4.1%
-I am feeling depressed because of the tinnitus.,spring,8.5%,2.5%,3.5%,1.9%,2.4%,0.0%,3.0%,3.8%,3.4%,0.9%
-I am feeling depressed because of the tinnitus.,summer,2.8%,2.5%,0.9%,2.1%,3.7%,6.3%,4.5%,0.0%,2.9%,2.0%
-I am feeling depressed because of the tinnitus.,autumn,1.4%,1.7%,4.4%,2.1%,3.7%,7.8%,4.5%,7.7%,5.1%,3.9%
-I am feeling depressed because of the tinnitus.,winter,7.0%,1.7%,1.8%,1.6%,3.7%,4.7%,6.5%,1.3%,2.9%,2.8%
-I don't have any of these symptoms.,spring,0.0%,3.3%,6.1%,2.7%,1.2%,0.0%,1.0%,5.1%,0.0%,1.7%
-I don't have any of these symptoms.,summer,1.4%,4.1%,1.8%,2.4%,2.4%,3.1%,1.0%,3.8%,1.7%,1.7%
-I don't have any of these symptoms.,autumn,5.6%,1.7%,4.4%,3.1%,2.4%,0.0%,1.0%,0.0%,2.3%,2.4%
-I don't have any of these symptoms.,winter,2.8%,3.3%,7.9%,2.4%,1.2%,3.1%,2.0%,2.6%,2.3%,2.4%
-I find it harder to relax because of the tinnitus.,spring,5.6%,2.5%,4.4%,5.2%,4.9%,4.7%,7.0%,3.8%,5.7%,4.5%
-I find it harder to relax because of the tinnitus.,summer,2.8%,4.1%,7.9%,3.4%,3.7%,3.1%,2.5%,0.0%,4.6%,3.5%
-I find it harder to relax because of the tinnitus.,autumn,0.0%,9.9%,3.5%,5.6%,6.1%,3.1%,4.5%,5.1%,8.6%,3.9%
-I find it harder to relax because of the tinnitus.,winter,5.6%,9.1%,3.5%,3.3%,3.7%,6.3%,8.0%,3.8%,2.9%,2.2%
-I have strong worries because of the tinnitus.,spring,0.0%,0.8%,3.5%,2.2%,2.4%,0.0%,3.0%,3.8%,0.0%,2.8%
-I have strong worries because of the tinnitus.,summer,2.8%,2.5%,0.9%,2.6%,7.3%,7.8%,1.5%,1.3%,4.6%,1.5%
-I have strong worries because of the tinnitus.,autumn,0.0%,3.3%,1.8%,3.6%,4.9%,4.7%,3.5%,3.8%,6.3%,1.7%
-I have strong worries because of the tinnitus.,winter,0.0%,3.3%,0.9%,2.6%,2.4%,0.0%,1.5%,3.8%,2.9%,2.8%
+worst_symptom,season,CA,CH,DE,GB,NL,US
+"Because of the tinnitus I am more irritable with my family, friends and colleagues.",spring,0.0,0.0,0.019083969465648856,0.004975124378109453,0.011428571428571429,0.00931098696461825
+"Because of the tinnitus I am more irritable with my family, friends and colleagues.",summer,0.0,0.0,0.013740458015267175,0.009950248756218905,0.011428571428571429,0.0186219739292365
+"Because of the tinnitus I am more irritable with my family, friends and colleagues.",autumn,0.0,0.017543859649122806,0.016793893129770993,0.004975124378109453,0.022857142857142857,0.0223463687150838
+"Because of the tinnitus I am more irritable with my family, friends and colleagues.",winter,0.0,0.008771929824561403,0.015267175572519083,0.009950248756218905,0.005714285714285714,0.00931098696461825
+Because of the tinnitus I am more sensitive to environmental noises.,spring,0.024793388429752067,0.043859649122807015,0.026717557251908396,0.01990049751243781,0.011428571428571429,0.0148975791433892
+Because of the tinnitus I am more sensitive to environmental noises.,summer,0.03305785123966942,0.008771929824561403,0.0183206106870229,0.009950248756218905,0.017142857142857144,0.0223463687150838
+Because of the tinnitus I am more sensitive to environmental noises.,autumn,0.04132231404958678,0.043859649122807015,0.02900763358778626,0.004975124378109453,0.04,0.0260707635009311
+Because of the tinnitus I am more sensitive to environmental noises.,winter,0.01652892561983471,0.02631578947368421,0.021374045801526718,0.009950248756218905,0.0,0.01675977653631285
+Because of the tinnitus it is difficult to concentrate.,spring,0.024793388429752067,0.008771929824561403,0.03435114503816794,0.024875621890547265,0.02857142857142857,0.04655493482309125
+Because of the tinnitus it is difficult to concentrate.,summer,0.01652892561983471,0.02631578947368421,0.02900763358778626,0.01990049751243781,0.011428571428571429,0.027932960893854747
+Because of the tinnitus it is difficult to concentrate.,autumn,0.049586776859504134,0.008771929824561403,0.0366412213740458,0.014925373134328358,0.06285714285714286,0.0521415270018622
+Because of the tinnitus it is difficult to concentrate.,winter,0.024793388429752067,0.017543859649122806,0.025954198473282442,0.009950248756218905,0.03428571428571429,0.027932960893854747
+"Because of the tinnitus it is difficult to follow a conversation, a piece of music or a film.",spring,0.024793388429752067,0.02631578947368421,0.03358778625954199,0.03482587064676617,0.011428571428571429,0.04283054003724395
+"Because of the tinnitus it is difficult to follow a conversation, a piece of music or a film.",summer,0.04132231404958678,0.02631578947368421,0.029770992366412213,0.05970149253731343,0.03428571428571429,0.04655493482309125
+"Because of the tinnitus it is difficult to follow a conversation, a piece of music or a film.",autumn,0.04132231404958678,0.03508771929824561,0.04122137404580153,0.024875621890547265,0.03428571428571429,0.03165735567970205
+"Because of the tinnitus it is difficult to follow a conversation, a piece of music or a film.",winter,0.0,0.02631578947368421,0.03587786259541985,0.024875621890547265,0.017142857142857144,0.03910614525139665
+Because of the tinnitus it is hard for me to get to sleep.,spring,0.04132231404958678,0.043859649122807015,0.025954198473282442,0.029850746268656716,0.011428571428571429,0.035381750465549346
+Because of the tinnitus it is hard for me to get to sleep.,summer,0.008264462809917356,0.017543859649122806,0.01984732824427481,0.029850746268656716,0.005714285714285714,0.0297951582867784
+Because of the tinnitus it is hard for me to get to sleep.,autumn,0.024793388429752067,0.008771929824561403,0.03358778625954199,0.04975124378109453,0.05142857142857143,0.03165735567970205
+Because of the tinnitus it is hard for me to get to sleep.,winter,0.024793388429752067,0.03508771929824561,0.026717557251908396,0.05472636815920398,0.017142857142857144,0.040968342644320296
+I am feeling depressed because of the tinnitus.,spring,0.024793388429752067,0.03508771929824561,0.019083969465648856,0.029850746268656716,0.03428571428571429,0.00931098696461825
+I am feeling depressed because of the tinnitus.,summer,0.024793388429752067,0.008771929824561403,0.021374045801526718,0.04477611940298507,0.02857142857142857,0.020484171322160148
+I am feeling depressed because of the tinnitus.,autumn,0.01652892561983471,0.043859649122807015,0.021374045801526718,0.04477611940298507,0.05142857142857143,0.03910614525139665
+I am feeling depressed because of the tinnitus.,winter,0.01652892561983471,0.017543859649122806,0.01603053435114504,0.06467661691542288,0.02857142857142857,0.027932960893854747
+I don't have any of these symptoms.,spring,0.03305785123966942,0.06140350877192982,0.026717557251908396,0.009950248756218905,0.0,0.01675977653631285
+I don't have any of these symptoms.,summer,0.04132231404958678,0.017543859649122806,0.02366412213740458,0.009950248756218905,0.017142857142857144,0.01675977653631285
+I don't have any of these symptoms.,autumn,0.01652892561983471,0.043859649122807015,0.030534351145038167,0.009950248756218905,0.022857142857142857,0.024208566108007448
+I don't have any of these symptoms.,winter,0.03305785123966942,0.07894736842105263,0.02366412213740458,0.01990049751243781,0.022857142857142857,0.024208566108007448
+I find it harder to relax because of the tinnitus.,spring,0.024793388429752067,0.043859649122807015,0.051908396946564885,0.06965174129353234,0.05714285714285714,0.0446927374301676
+I find it harder to relax because of the tinnitus.,summer,0.04132231404958678,0.07894736842105263,0.03435114503816794,0.024875621890547265,0.045714285714285714,0.035381750465549346
+I find it harder to relax because of the tinnitus.,autumn,0.09917355371900827,0.03508771929824561,0.055725190839694655,0.04477611940298507,0.08571428571428572,0.03910614525139665
+I find it harder to relax because of the tinnitus.,winter,0.09090909090909091,0.03508771929824561,0.03282442748091603,0.07960199004975124,0.02857142857142857,0.0223463687150838
+I have strong worries because of the tinnitus.,spring,0.008264462809917356,0.03508771929824561,0.022137404580152672,0.029850746268656716,0.0,0.027932960893854747
+I have strong worries because of the tinnitus.,summer,0.024793388429752067,0.008771929824561403,0.025954198473282442,0.014925373134328358,0.045714285714285714,0.0148975791433892
+I have strong worries because of the tinnitus.,autumn,0.03305785123966942,0.017543859649122806,0.03587786259541985,0.03482587064676617,0.06285714285714286,0.01675977653631285
+I have strong worries because of the tinnitus.,winter,0.03305785123966942,0.008771929824561403,0.025954198473282442,0.014925373134328358,0.02857142857142857,0.027932960893854747

@@ -134,9 +134,11 @@ def show_values_on_bars(axs, h_v="v", space=0.4, normalize = False):
                 if normalize:    
                     _x = p.get_x() + p.get_width()
                     value = p.get_width()
+                    float_formatter = '{:.2%}'.format
+                    ax.text(_x, _y, float_formatter(value), ha="left")
                 else:
                     value = int(p.get_width())
-                ax.text(_x, _y, value, ha="left")
+                    ax.text(_x, _y, value, ha="left")
 
     if isinstance(axs, np.ndarray):
         for idx, ax in np.ndenumerate(axs):
