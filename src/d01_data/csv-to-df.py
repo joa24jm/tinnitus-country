@@ -87,8 +87,8 @@ survey_cache = survey[survey.loc[:,'mail'].isin(survey_emails)][cols_of_interest
 survey_merged = pd.merge(survey_cache, users, left_on='mail', right_on = 'email')[cols_of_interest + ['id']]
 
 # get information of these users from merged
-cache = pd.merge(merged_df, survey_merged, how='left', left_on='user_id', right_on='id')
-cache = cache[cache.mail.notna()]
+cache = pd.merge(merged_df, survey_merged, how='outer', left_on='user_id', right_on='id')
+# cache = cache[cache.mail.notna()]
 
 # save mapping from id to mail
 id_mail = cache[['id', 'mail']].drop_duplicates()
