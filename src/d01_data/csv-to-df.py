@@ -71,20 +71,46 @@ survey_filtered = survey[survey.iloc[:, -3] == 'ja']
 survey_emails = [mail.lower() for mail in survey_filtered.iloc[:, -2].dropna().unique()
                  if '@' in mail]
 
-# get user_ids of these mail addresses
-user_ids = users[users['email'].isin(survey_emails)].id.values
+# rename col for better readability
+survey.rename(columns={'11. If you said yes to the last question, would you mind to provide us with your e-mail address to give us the opportunity to contact you?':'mail'}, inplace = True)
+
+# get cols of interest from survey df ('die Informatinen in den Spalten I, J und K')
+cols_of_interest = [ '4. Overall speaking, does the use of the TrackYourTinnitus App helped you?',
+       '5. Would you recommend the TrackYourTinnitus App to other users?',
+       '6. Did you perceive any adverse events when using the TrackYourTinnitus App?',
+       'mail']
+
+# get mails and cols of interest of that survey df
+survey_cache = survey[survey.loc[:,'mail'].isin(survey_emails)][cols_of_interest]
+
+# merge with df 'users' to get user_ids from emails
+survey_merged = pd.merge(survey_cache, users, left_on='mail', right_on = 'email')[cols_of_interest + ['id']]
 
 # get information of these users from merged
-survey_users = merged_df[merged_df['user_id'].isin(user_ids)]
-# convert user_id to integer
-survey_users = survey_users.astype({'user_id':'int32'})
+cache = pd.merge(merged_df, survey_merged, how='left', left_on='user_id', right_on='id')
+cache = cache[cache.mail.notna()]
+
+# save mapping from id to mail
+id_mail = cache[['id', 'mail']].drop_duplicates()
+
+# drop mail and id from cache_df
+cache.drop(axis = 1, labels = ['id', 'mail'], inplace = True)
+
 
 #%% save data from survey users and merged_df with all users
-survey_users.to_csv('data/02_intermediate/survey_users.csv',
+
+# save data from survey users
+cache.to_csv('data/02_intermediate/survey_users.csv',
                     index = False)
 
+# save id_mail mapping seperately for data protection
+id_mail.to_csv('data/02_intermediate/survey_id_mail.csv',
+                    index = False)
+
+# save merged_df
 merged_df.to_csv('data/02_intermediate/merged_users.csv',
                     index = True)
 
+# safe baseline df
 baseline.to_csv('data/02_intermediate/baseline.csv',
                     index = True)
