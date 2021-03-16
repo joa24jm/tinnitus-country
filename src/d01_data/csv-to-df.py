@@ -66,9 +66,7 @@ rename_cols = {'created_at_x':'fup_answer_from',
 merged_df.rename(columns = rename_cols, inplace= True)
 
 # check for matches in tyt plattform from survey and users
-# Spalte 'O' muss ein ja drinstehen
-survey_filtered = survey[survey.iloc[:, -3] == 'ja']
-survey_emails = [mail.lower() for mail in survey_filtered.iloc[:, -2].dropna().unique()
+survey_emails = [mail.lower() for mail in survey.iloc[:, -2].dropna().unique()
                  if '@' in mail]
 
 # rename col for better readability
