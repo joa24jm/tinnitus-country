@@ -5,7 +5,7 @@ Created on Mon Mar  1 15:02:56 2021
 @author: joa24jm
 
 This file reads in the df merged_users and converts it into a ML readable dataframe
-with no missing values and an equal split per country
+with no missing values and an equal split for the target (upsampling)
 """
 p_loc = 'C:/Users/joa24jm/Documents/tinnitus-country/'
 #%% imports

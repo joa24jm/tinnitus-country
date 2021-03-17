@@ -45,7 +45,7 @@ cc = pd.read_csv(url)
 t = pd.merge(t, cc, left_on = 'Country', right_on = 'Name')
 
 #%% export 
-t.to_csv(p_loc + '/data/02_intermediate/temp_by_country-code_by_month.csv')
+t.to_csv(p_loc + '/data/02_intermediate/temp_by_country-code_by_month.csv', index = False)
 
 
 
