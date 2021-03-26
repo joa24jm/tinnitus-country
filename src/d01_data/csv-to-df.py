@@ -50,6 +50,8 @@ merged_df.set_index('id', drop = True, inplace = True)
 # add country information
 merged_df = pd.merge(merged_df, users_meta[['user_id', 'country']], 
                      on = 'user_id', how = 'left')
+baseline = pd.merge(baseline, users_meta[['user_id', 'country']],
+                    right_on = 'user_id', left_index = True, how = 'left')
 
 # add continent information by reading in continent dataframe
 url = 'https://pkgstore.datahub.io/JohnSnowLabs/country-and-continent-codes-list/country-and-continent-codes-list-csv_csv/data/b7876b7f496677669644f3d1069d3121/country-and-continent-codes-list-csv_csv.csv'
@@ -98,17 +100,17 @@ cache.drop(axis = 1, labels = ['id', 'mail'], inplace = True)
 #%% save data from survey users and merged_df with all users
 
 # save data from survey users
-cache.to_csv('data/02_intermediate/survey_users.csv',
+cache.to_csv(proj_loc + 'data/02_intermediate/survey_users.csv',
                     index = False)
 
 # save id_mail mapping seperately for data protection
-id_mail.to_csv('data/02_intermediate/survey_id_mail.csv',
+id_mail.to_csv(proj_loc+ 'data/02_intermediate/survey_id_mail.csv',
                     index = False)
 
 # save merged_df
-merged_df.to_csv('data/02_intermediate/merged_users.csv',
+merged_df.to_csv(proj_loc + 'data/02_intermediate/merged_users.csv',
                     index = True)
 
 # safe baseline df
-baseline.to_csv('data/02_intermediate/baseline.csv',
+baseline.to_csv(proj_loc+ 'data/02_intermediate/baseline.csv',
                     index = True)
