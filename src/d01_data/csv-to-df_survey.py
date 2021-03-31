@@ -5,7 +5,8 @@ Created on Thu Feb 25 14:56:24 2021
 @author: joa24jm
 
 This file reads in the csv files from data/01_raw
-and converts them into pandas dataframes.
+and converts them into pandas dataframes that has daily answers + corresponding information from baseline and umfrageonline.
+Final shape is (98074, 66), it saves only one dataframe and does not overwrite dfs for the TYT country paper.
 The files have been exported from phpmyAdmin using the 'csv for ms excel' option.
 
 Update:
