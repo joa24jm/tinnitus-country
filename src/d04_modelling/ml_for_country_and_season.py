@@ -87,7 +87,7 @@ for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     gridsearch.best_estimator_.fit(x_train, y_train)
     
     # safe this estimator
-    joblib.dump(gridsearch.best_estimator_, f'results/04_models/best_estimator/{key}_{tday}.pkl')
+    joblib.dump(gridsearch.best_estimator_, p_loc + f'results/04_models/best_estimator/{key}_{tday}.pkl')
     
     # safe scores in scores dict
     scores[key] = gridsearch.best_score_
@@ -101,7 +101,7 @@ for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     # safe classification report to excel
     y_pred = gridsearch.best_estimator_.predict(x_test)
     report = classification_report(y_test, y_pred, output_dict=True, target_names = ['Tinnitus NO', 'Tinnitus YES'])
-    pd.DataFrame(report).to_csv(p_loc + f'results/06_reports/classification_reports/{key}_{tday}.csv')
+    pd.DataFrame(report).transpose().to_csv(p_loc + f'results/06_reports/classification_reports/{key}_{tday}.csv')
     
     # safe confusion matrix
     labels = ['Tinnitus NO', 'Tinnitus YES']
@@ -113,3 +113,5 @@ import seaborn as sns
 
 sns.heatmap(confusion_matrix(y_test, y_pred), annot = True,
             fmt = 'd', cmap = 'Blues')
+
+
