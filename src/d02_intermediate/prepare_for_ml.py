@@ -27,7 +27,12 @@ df = pd.concat([df, country_dummy_df], axis = 1)
 features_list.extend(country_dummy_df.columns.tolist())
 
 #2 The four seasons
-df['fup_season'] = df.fup_answer_from.dt.date.apply(u.get_season)
+
+# first derive whether the country is northern or not
+df['is_northern'] = df.country.apply(u.is_country_northern) # takes a coule of minutes to run
+
+# now derive the season from the answer date and the information, whether the country is northern or not
+df['fup_season'] = df.apply(lambda x: u.get_season(x.fup_answer_from, x.is_northern), axis=1)
 season_dummy_df = pd.get_dummies(df['fup_season'])
 df = pd.concat([df, season_dummy_df], axis = 1)
 features_list.extend(season_dummy_df.columns.tolist())
@@ -40,7 +45,14 @@ features_list.extend(gender_dummy_df.columns.tolist())
 #4 The year of birth
 s = df['4'].dt.year.rename('year_of_birth')
 df = pd.concat([df, s], axis = 1)
-features_list.append(s.name)
+
+
+#4.1 The age derived by birthdate and fup_answer_from
+## convert fup_answer and year_of_birth to a timedelta
+df['timedelta'] = pd.to_datetime(df['fup_answer_from'].dropna().dt.date) - pd.to_datetime(df['4'].dropna().dt.date)
+df['age'] = df['timedelta'].apply(lambda x: round(x.days/365, 1))
+features_list.append('age')
+
 
 #5 questions 4,5,6, and 7 from the daily questionnaire
 features_list.extend(['question4', 'question5', 'question6', 'question7'])
@@ -59,4 +71,4 @@ sampled_df = df[df.question1 == 0].sample(n=times_to_draw, replace = True)
 df = df.append(sampled_df, ignore_index = True)
 
 #%% safe dataframe
-df.to_csv('data/03_processed/df_equal_splits.csv', index = False)
+df.to_csv(p_loc + 'data/03_processed/df_equal_splits_with_age.csv', index = False)

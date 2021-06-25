@@ -8,6 +8,8 @@ Helper function for this project
 
 """
 
+import pandas as pd
+
 def unroll_baseline(ans):
     """
     Convert answer dataframe with one column for all answers of all questions
@@ -146,14 +148,35 @@ def show_values_on_bars(axs, h_v="v", space=0.4, normalize = False):
     else:
         _show_on_single_plot(axs)
         
+
+# define a functions, that returns true if the country is from the northern_hemisphere
+def is_country_northern(country):
+    """
+    country: ISO2 string, i.e. 'DE', 'US'
+    Returns True if the country is from the northern hemisphere
+    """
+    import pandas as pd
+    p_loc = 'C:/Users/joa24jm/Documents/tinnitus-country/'
+    southern_countries = pd.read_csv(p_loc + 'data/00_sources/southern_countries.csv').iso2.values
+    
+    if country not in southern_countries:
+        if isinstance(country, str):
+            return True
+        else:
+            import numpy as np
+            return np.nan
         
-def get_season(d):
+    if country in southern_countries:
+        return False
+
+def get_season(d, is_northern):
     """
     Returns the season given a datetime object
 
     Parameters
     ----------
     date : datetime object
+    is_northern: boolean indicating whether the country is from the northern hemisphere
     Returns
     -------
     season as string.
@@ -162,11 +185,18 @@ def get_season(d):
     from datetime import date, datetime
 
     Y = 2000 # dummy leap year to allow input X-02-29 (leap day)
-    seasons = [('winter', (date(Y,  1,  1),  date(Y,  3, 20))),
-               ('spring', (date(Y,  3, 21),  date(Y,  6, 20))),
-               ('summer', (date(Y,  6, 21),  date(Y,  9, 22))),
-               ('autumn', (date(Y,  9, 23),  date(Y, 12, 20))),
-               ('winter', (date(Y, 12, 21),  date(Y, 12, 31)))]
+    if is_northern:
+        seasons = [('winter', (date(Y,  1,  1),  date(Y,  3, 20))),
+                    ('spring', (date(Y,  3, 21),  date(Y,  6, 20))),
+                    ('summer', (date(Y,  6, 21),  date(Y,  9, 22))),
+                    ('autumn', (date(Y,  9, 23),  date(Y, 12, 20))),
+                    ('winter', (date(Y, 12, 21),  date(Y, 12, 31)))]
+    else:
+        seasons = [('summer', (date(Y,  1,  1),  date(Y,  3, 20))),
+            ('autumn', (date(Y,  3, 21),  date(Y,  6, 20))),
+            ('winter', (date(Y,  6, 21),  date(Y,  9, 22))),
+            ('spring', (date(Y,  9, 23),  date(Y, 12, 20))),
+            ('summer', (date(Y, 12, 21),  date(Y, 12, 31)))]
     
 
     if isinstance(d, datetime):

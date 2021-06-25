@@ -24,12 +24,12 @@ import datetime
 
 #%% read in df
 
-df = pd.read_csv(p_loc + 'data/03_processed/df_equal_splits.csv')
+df = pd.read_csv(p_loc + 'data/03_processed/df_equal_splits_with_age.csv')
 
 #%% select features and target
 features = ['AT', 'CA', 'CH','DE','GB', 'IT', 'NL', 'NO', 'RU', 'US', # countries
             'autumn', 'spring', 'summer', 'winter',                  # season
-            #'Male', 'year_of_birth',                                 # demographics
+            'Male', 'age',                                 # demographics
             'question4', 'question5', 'question6', 'question7'
             ]      # EMAs
 
