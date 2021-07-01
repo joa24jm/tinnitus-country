@@ -58,7 +58,7 @@ features_list.append('age')
 features_list.extend(['question4', 'question5', 'question6', 'question7'])
 
 #%% shrink the dataset to features and target
-df = df.loc[country_dummy_df.index, features_list + ['question1', 'user_id']]
+df = df.loc[country_dummy_df.index, features_list + ['question1', 'question2', 'question3', 'user_id']]
 
 # drop missing values for now -> this leads to a lost of approx 650 users
 #TODO: Better approach!
@@ -71,4 +71,4 @@ sampled_df = df[df.question1 == 0].sample(n=times_to_draw, replace = True)
 df = df.append(sampled_df, ignore_index = True)
 
 #%% safe dataframe
-df.to_csv(p_loc + 'data/03_processed/df_equal_splits_with_age.csv', index = False)
+df.to_csv(p_loc + 'data/03_processed/df_equal_splits_with_age_with_question2_question_3.csv', index = False)
