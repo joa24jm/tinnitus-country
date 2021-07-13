@@ -247,3 +247,37 @@ def cramers_corrected_stat(confusion_matrix):
     rcorr = r - ((r-1)**2)/(n-1)
     kcorr = k - ((k-1)**2)/(n-1)
     return np.sqrt(phi2corr / min( (kcorr-1), (rcorr-1)))
+
+def regression_report(y_true, y_pred):
+    """
+    Print a regression report for your regression problem, as provided from:
+    https://github.com/scikit-learn/scikit-learn/issues/18454
+
+    Parameters
+    ----------
+    y_true - Ground truth of our regression
+    y_pred - Estimated values for the regression problem
+
+    Returns
+    -------
+    df containing the metrics
+    """
+
+    # import libraries
+    from sklearn.metrics import mean_absolute_error, mean_squared_error, max_error, median_absolute_error, r2_score, \
+        explained_variance_score
+    import numpy as np
+    import pandas as pd
+
+    metrics = {
+        'mean_absolute_error': mean_absolute_error(y_true, y_pred),
+        'median_absolute_error': median_absolute_error(y_true, y_pred),
+        'mean_squared_error': mean_squared_error(y_true, y_pred),
+        'max_error': max_error(y_true, y_pred),
+        'r2_score': r2_score(y_true, y_pred),
+        'explained_variance_score': explained_variance_score(y_true, y_pred)
+    }
+
+    df = pd.DataFrame(metrics, index = [0])
+
+    return df

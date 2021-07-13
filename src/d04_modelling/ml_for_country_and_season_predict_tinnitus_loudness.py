@@ -19,9 +19,11 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
 import joblib
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, mean_absolute_error
 import datetime
 from pathlib import Path
+import numpy as np
+from utilities import regression_report
 
 #%% read in df
 base_path = Path(__file__).parent.parent.parent
@@ -44,6 +46,14 @@ x_train, x_test, y_train, y_test = train_test_split(X, y,
                                                     test_size = 0.3,
                                                     random_state = 42,
                                                     shuffle = True)
+
+# save to csv for further analysis
+x_train.to_csv(p_loc + 'data/04_models/x_train.csv', index_label = 'index')
+y_train.to_csv(p_loc + 'data/04_models/y_train.csv', index_label = 'index')
+x_test.to_csv(p_loc + 'data/04_models/x_test.csv', index_label = 'index')
+y_test.to_csv(p_loc + 'data/04_models/y_test.csv', index_label = 'index')
+
+
 
 #%% prepare gridsearch for both random forest (rf) and gradient boosting classifier (gb)
 # list of default classifiers
@@ -75,11 +85,11 @@ trained_clfs= []
 for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     gridsearch = GridSearchCV(estimator = clf, 
                               param_grid = param_grid,
-                              scoring = 'accuracy',
+                              scoring = 'neg_mean_absolute_error',
                               n_jobs = -1,
                               cv = 5,
                               refit = True,
-                              verbose = 2)
+                              verbose = 1)
       
     # perform gridsearch on train data
     gridsearch.fit(x_train, y_train)
@@ -97,23 +107,14 @@ for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     trained_clfs.append(gridsearch.best_estimator_)
     
     # safe gridsearch results to dataframe
-    pd.DataFrame(gridsearch.cv_results_).to_csv(p_loc + f'results/04_models/gridsearch/{key}_{tday}.csv')
+    pd.DataFrame(gridsearch.cv_results_).to_csv(p_loc + f'results/04_models/best_estimator/gb_regressor/{key}_{tday}.csv')
     
     # safe classification report to excel
-    y_pred = gridsearch.best_estimator_.predict(x_test)
-    #TODO Get a proper evaluation for a regression task like this (RMSE?)
-    report = classification_report(y_test, y_pred, output_dict=True, target_names = ['Tinnitus NO', 'Tinnitus YES'])
-    pd.DataFrame(report).transpose().to_csv(p_loc + f'results/06_reports/classification_reports/{key}_{tday}.csv')
-    
-    # safe confusion matrix
-    labels = ['Tinnitus NO', 'Tinnitus YES']
-    pd.DataFrame(confusion_matrix(y_test, y_pred), index = labels, 
-                 columns = labels).to_csv(p_loc + f'results/06_reports/confusion_matrices/confusion_{key}_{tday}.csv')
-    
-#%% plot confusion matrix
-import seaborn as sns
+    y_pred = np.array(gridsearch.best_estimator_.predict(x_test))
 
-sns.heatmap(confusion_matrix(y_test, y_pred), annot = True,
-            fmt = 'd', cmap = 'Blues')
+    # cut off y_pred to (0,1)
+    y_pred = [0 if pred <= 0 else pred for pred in y_pred]
+    y_pred = [1 if pred >= 1 else pred for pred in y_pred]
 
-
+    report = regression_report(y_test, y_pred)
+    report.to_csv(p_loc + f'results/06_reports/regression_reports/{key}_{tday}.csv')
