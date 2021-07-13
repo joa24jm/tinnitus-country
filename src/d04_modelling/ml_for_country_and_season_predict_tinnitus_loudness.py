@@ -17,9 +17,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import classification_report
-import joblib
-from sklearn.metrics import confusion_matrix, mean_absolute_error
+import pickle
 import datetime
 from pathlib import Path
 import numpy as np
@@ -98,7 +96,9 @@ for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     gridsearch.best_estimator_.fit(x_train, y_train)
     
     # safe this estimator
-    joblib.dump(gridsearch.best_estimator_, p_loc + f'results/04_models/best_estimator/{key}_{tday}.pkl')
+    gb = gridsearch.best_estimator_
+    filename = p_loc + f'results/04_models/best_estimator/gb_regressor/{key}_{tday}.sav'
+    pickle.dump(gb, open(filename, 'wb'))
     
     # safe scores in scores dict
     scores[key] = gridsearch.best_score_
@@ -107,7 +107,7 @@ for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     trained_clfs.append(gridsearch.best_estimator_)
     
     # safe gridsearch results to dataframe
-    pd.DataFrame(gridsearch.cv_results_).to_csv(p_loc + f'results/04_models/best_estimator/gb_regressor/{key}_{tday}.csv')
+    pd.DataFrame(gridsearch.cv_results_).to_csv(p_loc + f'results/04_models/gridsearch/gb_regressor/{key}_{tday}.csv')
     
     # safe classification report to excel
     y_pred = np.array(gridsearch.best_estimator_.predict(x_test))
