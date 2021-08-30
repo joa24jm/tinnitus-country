@@ -69,7 +69,7 @@ scores = {'gb': None}
 # save trained clfs
 trained_clfs= []
 
-#%% loop over params grid, takes approx. 2-3 hours
+#%% loop over params grid
 for param_grid, clf, key in zip(param_grids, clfs, scores.keys()):
     gridsearch = GridSearchCV(estimator = clf, 
                               param_grid = param_grid,
